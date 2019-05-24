@@ -1,0 +1,10 @@
+.UserOutput {
+    padding: 20px;
+    border: 2px solid rgb(95, 69, 136);
+    box-shadow: 13px 10px 21px -5px rgba(0,0,0,0.75);
+    margin: 30px 10px 10px 20px;
+}
+
+h2 {
+    color: purple;
+}
