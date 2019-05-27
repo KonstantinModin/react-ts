@@ -30,7 +30,7 @@ function App() {
         
 
         setPersonsList([...personsList.slice(0, personIndex), newPerson, ...personsList.slice(personIndex + 1)]);
-        // console.log(personsList);
+        
     };
 
     return (
