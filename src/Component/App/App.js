@@ -27,8 +27,7 @@ function App() {
         };
         newPerson.name = event.target.value;
 
-        // const pers = [...personsList];
-        // pers[personIndex] = newPerson;
+        
 
         setPersonsList([...personsList.slice(0, personIndex), newPerson, ...personsList.slice(personIndex + 1)]);
         // console.log(personsList);
