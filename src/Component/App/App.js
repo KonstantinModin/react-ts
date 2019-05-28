@@ -4,6 +4,7 @@ import UserInput from '../UserInput/';
 import UserOutput from '../UserOutput/';
 import PersonItem from '../PersonItem';
 import ValidationComponent from '../ValidationComponent';
+import CharComponent from '../CharComponent';
 
 function App() {
     const [myState, setMyState] = useState('Initial Value');
@@ -37,6 +38,10 @@ function App() {
     const lastInputHandler = ({target}) => {
         setInputValue(target.value);
     }
+    const charComponentHandler = (index) => {
+        const newValue = inputValue.slice(0, index) + inputValue.slice(index + 1);
+        setInputValue(newValue);
+    }
 
     return (
         <div className="App">
@@ -44,6 +49,11 @@ function App() {
             <p>{inputValue.length}</p>
             <p>{inputValue}</p>
             <ValidationComponent inputLength={inputValue.length} />
+            {inputValue.split``.map((char, index) => {
+                return <CharComponent char={char} click={() => charComponentHandler(index)}/>
+            })
+
+            }
 
             {/* <UserInput defaultValue={myState} onChange={inputHandler}/>
             <UserOutput output={myState} />
