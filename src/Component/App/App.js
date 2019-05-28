@@ -3,6 +3,7 @@ import './App.css';
 import UserInput from '../UserInput/';
 import UserOutput from '../UserOutput/';
 import PersonItem from '../PersonItem';
+import ValidationComponent from '../ValidationComponent';
 
 function App() {
     const [myState, setMyState] = useState('Initial Value');
@@ -32,10 +33,19 @@ function App() {
 
     const showMeHandler = () => setToggleBool(!toggleBoll);
 
+    const [inputValue, setInputValue] = useState('');
+    const lastInputHandler = ({target}) => {
+        setInputValue(target.value);
+    }
+
     return (
         <div className="App">
-            <h1>Hooks + Events</h1>            
-            <UserInput defaultValue={myState} onChange={inputHandler}/>
+            <input value={inputValue} onChange={lastInputHandler} />
+            <p>{inputValue.length}</p>
+            <p>{inputValue}</p>
+            <ValidationComponent inputLength={inputValue.length} />
+
+            {/* <UserInput defaultValue={myState} onChange={inputHandler}/>
             <UserOutput output={myState} />
             <button onClick={showMeHandler}>Show me!</button>
             {toggleBoll ? personsList.map(person => {
@@ -48,7 +58,7 @@ function App() {
                         change={(event) => handleChange(event, person.id)}
                     />
                 );
-            }) : null}
+            }) : null} */}
         </div>
     );
 }
