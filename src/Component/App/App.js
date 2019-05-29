@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import classes from'./App.css';
 import UserInput from '../UserInput/';
 import UserOutput from '../UserOutput/';
 import PersonItem from '../PersonItem';
@@ -44,7 +44,7 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div className={classes.App}>
             <input value={inputValue} onChange={lastInputHandler} />
             <p>{inputValue.length}</p>
             <p>{inputValue}</p>
@@ -55,7 +55,7 @@ function App() {
 
             }
 
-            {/* <UserInput defaultValue={myState} onChange={inputHandler}/>
+            <UserInput defaultValue={myState} onChange={inputHandler}/>
             <UserOutput output={myState} />
             <button onClick={showMeHandler}>Show me!</button>
             {toggleBoll ? personsList.map(person => {
@@ -68,7 +68,7 @@ function App() {
                         change={(event) => handleChange(event, person.id)}
                     />
                 );
-            }) : null} */}
+            }) : null}
         </div>
     );
 }
