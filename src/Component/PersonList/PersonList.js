@@ -6,9 +6,8 @@ const PersonList = (props) => {
     return (
         props.list.map(person => {
             return (            
-                <ErrorBoundary>
-                <PersonItem 
-                    key={person.id}                           
+                <ErrorBoundary key={person.id} >
+                <PersonItem                                              
                     name={person.name} 
                     age={person.age} 
                     click={() => props.delete(person.id)}
