@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import classes from'./App.css';
 import UserInput from '../UserInput/';
 import UserOutput from '../UserOutput/';
@@ -6,8 +6,9 @@ import PersonItem from '../PersonItem';
 import ValidationComponent from '../ValidationComponent';
 import CharComponent from '../CharComponent';
 import ErrorBoundary from '../ErrorBoundary';
+import PersonList from '../PersonList';
 
-function App() {
+const App = () => {
     const [myState, setMyState] = useState('Initial Value');
     const [personsList, setPersonsList] = useState([
         {id: 223, name: 'Jhon', age: 32},
@@ -45,6 +46,7 @@ function App() {
     }
 
     return (
+        
         <div className={classes.App}>
             <input value={inputValue} onChange={lastInputHandler} />
             <p>{inputValue.length}</p>
@@ -57,21 +59,21 @@ function App() {
             }
 
             <UserInput defaultValue={myState} onChange={inputHandler}/>
-            <UserOutput output={myState} />
+
+            <ErrorBoundary>
+                <UserOutput output={myState} />
+            </ErrorBoundary>
+
             <button onClick={showMeHandler}>Show me!</button>
-            {toggleBoll ? personsList.map(person => {
-                return (            
-                    <ErrorBoundary key={person.id} >
-                        <PersonItem                             
-                            name={person.name} 
-                            age={person.age} 
-                            click={() => deleteHandler(person.id)}
-                            change={(event) => handleChange(event, person.id)}
-                        />
-                    </ErrorBoundary>
-                );
-            }) : null}
+            
+                {toggleBoll ? <PersonList 
+                    list={personsList} 
+                    delete={(id) => deleteHandler(id)} 
+                    change={(event, id) => handleChange(event, id)}
+                    /> : null}
+           
         </div>
+        
     );
 }
 
