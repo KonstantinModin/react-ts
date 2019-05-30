@@ -5,6 +5,7 @@ import UserOutput from '../UserOutput/';
 import PersonItem from '../PersonItem';
 import ValidationComponent from '../ValidationComponent';
 import CharComponent from '../CharComponent';
+import ErrorBoundary from '../ErrorBoundary';
 
 function App() {
     const [myState, setMyState] = useState('Initial Value');
@@ -60,13 +61,14 @@ function App() {
             <button onClick={showMeHandler}>Show me!</button>
             {toggleBoll ? personsList.map(person => {
                 return (            
-                    <PersonItem 
-                        key={person.id} 
-                        name={person.name} 
-                        age={person.age} 
-                        click={() => deleteHandler(person.id)}
-                        change={(event) => handleChange(event, person.id)}
-                    />
+                    <ErrorBoundary key={person.id} >
+                        <PersonItem                             
+                            name={person.name} 
+                            age={person.age} 
+                            click={() => deleteHandler(person.id)}
+                            change={(event) => handleChange(event, person.id)}
+                        />
+                    </ErrorBoundary>
                 );
             }) : null}
         </div>
