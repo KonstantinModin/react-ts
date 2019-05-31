@@ -28,6 +28,7 @@ const App = () => {
     }; 
 
     const handleChange = (event, id) => {
+        console.log(event, id);
         const personIndex = personsList.findIndex(person => person.id === id);
         const newPerson = {...personsList[personIndex], name: event.target.value};
         setPersonsList([...personsList.slice(0, personIndex), newPerson, 
@@ -52,20 +53,21 @@ const App = () => {
             <p>{inputValue.length}</p>
             <p>{inputValue}</p>
             <ValidationComponent inputLength={inputValue.length} />
-            {inputValue.split``.map((char, index) => {
-                return <CharComponent char={char} click={() => charComponentHandler(index)}/>
-            })
+            {inputValue.split``.map((char, index) => <CharComponent 
+                    char={char} 
+                    click={() => charComponentHandler(index)}
+                    />
+            )}
 
-            }
             <ErrorBoundary>
                 <UserInput defaultValue={myState} onChange={inputHandler}/>
             </ErrorBoundary>
+
             <ErrorBoundary>
                 <UserOutput output={myState} />
             </ErrorBoundary>
 
-            <button onClick={showMeHandler}>Show me!</button>
-            
+            <button onClick={showMeHandler}>Show me!</button>            
                 {toggleBoll ? <PersonList 
                     list={personsList} 
                     delete={(id) => deleteHandler(id)} 

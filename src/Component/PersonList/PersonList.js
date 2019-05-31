@@ -9,7 +9,7 @@ const PersonList = (props) => props.list.map(person => {
                     name={person.name} 
                     age={person.age} 
                     click={() => props.delete(person.id)}
-                    change={() => props.handleChange(person.id)}
+                    change={(event, id) => props.change(event, person.id)}
                 />
             </ErrorBoundary>
             
