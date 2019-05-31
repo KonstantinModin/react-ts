@@ -57,9 +57,9 @@ const App = () => {
             })
 
             }
-
-            <UserInput defaultValue={myState} onChange={inputHandler}/>
-
+            <ErrorBoundary>
+                <UserInput defaultValue={myState} onChange={inputHandler}/>
+            </ErrorBoundary>
             <ErrorBoundary>
                 <UserOutput output={myState} />
             </ErrorBoundary>
