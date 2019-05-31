@@ -68,12 +68,9 @@ const App = () => {
             </ErrorBoundary>
 
             <button onClick={showMeHandler}>Show me!</button>            
-                {toggleBoll ? <PersonList 
-                    list={personsList} 
-                    delete={(id) => deleteHandler(id)} 
-                    change={(event, id) => handleChange(event, id)}
-                    /> : null}
-           
+            {toggleBoll ? 
+            <PersonList list={personsList} delete={deleteHandler} change={handleChange} />
+            : null}           
         </div>
         
     );
