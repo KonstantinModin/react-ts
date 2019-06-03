@@ -45,6 +45,7 @@ const App = () => {
         const newValue = inputValue.slice(0, index) + inputValue.slice(index + 1);
         setInputValue(newValue);
     }
+    const [userInputFlag, setUserInputFlag] = useState(true);
 
     return (
         
@@ -58,10 +59,10 @@ const App = () => {
                     click={() => charComponentHandler(index)}
                     />
             )}
-
-            <ErrorBoundary>
+            <button onClick={() => setUserInputFlag(false)}>Delete User Input</button>
+            {userInputFlag ? <ErrorBoundary>
                 <UserInput defaultValue={myState} onChange={inputHandler}/>
-            </ErrorBoundary>
+            </ErrorBoundary> : null}
 
             <ErrorBoundary>
                 <UserOutput output={myState} />

@@ -3,7 +3,11 @@ import classes from './UserInput.css';
 
 const UserInput = (props) => {
     useEffect(() => {
-        console.log('useEfect!')
+        console.log('useEfect! setup');
+        return () => {
+            console.log('cleaning');
+
+        }
     }, []);
 
     return (
