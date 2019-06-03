@@ -7,6 +7,7 @@ import ValidationComponent from '../ValidationComponent';
 import CharComponent from '../CharComponent';
 import ErrorBoundary from '../ErrorBoundary';
 import PersonList from '../PersonList';
+import withClass from '../../hoc/WithClass';
 
 const App = () => {
     const [myState, setMyState] = useState('Initial Value');
@@ -49,7 +50,9 @@ const App = () => {
 
     return (
         
-        <div className={classes.App}>
+        <React.Fragment>
+            <h1>Heading</h1>
+            <div>some text</div>
             <input value={inputValue} onChange={lastInputHandler} />
             <p>{inputValue.length}</p>
             <p>{inputValue}</p>
@@ -72,9 +75,9 @@ const App = () => {
             {toggleBoll ? 
             <PersonList list={personsList} delete={deleteHandler} change={handleChange} />
             : null}           
-        </div>
+        </React.Fragment>
         
     );
 }
 
-export default App;
+export default withClass(App, classes.App);
