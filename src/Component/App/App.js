@@ -7,7 +7,7 @@ import ValidationComponent from '../ValidationComponent';
 import CharComponent from '../CharComponent';
 import ErrorBoundary from '../ErrorBoundary';
 import PersonList from '../PersonList';
-import withClass from '../../hoc/WithClass';
+import withClass from '../../hoc/withClass';
 
 const App = () => {
     const [myState, setMyState] = useState('Initial Value');
