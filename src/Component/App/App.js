@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from'./App.css';
 import UserInput from '../UserInput/';
 import UserOutput from '../UserOutput/';
@@ -10,6 +10,13 @@ import PersonList from '../PersonList';
 import withClass from '../../hoc/withClass';
 
 const App = () => {
+    const showMeButtonRef = React.createRef();
+
+    useEffect(() => {
+        console.log('App.js useEffect!');
+        showMeButtonRef.current.click();
+    }, [])
+
     const [myState, setMyState] = useState('Initial Value');
     const [personsList, setPersonsList] = useState([
         {id: 223, name: 'Jhon', age: 32},
@@ -71,7 +78,7 @@ const App = () => {
                 <UserOutput output={myState} />
             </ErrorBoundary>
 
-            <button onClick={showMeHandler}>Show me!</button>            
+            <button ref={showMeButtonRef} onClick={showMeHandler}>Show me!</button>            
             {toggleBoll ? 
             <PersonList list={personsList} delete={deleteHandler} change={handleChange} />
             : null}           

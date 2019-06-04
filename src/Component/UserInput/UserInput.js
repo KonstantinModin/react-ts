@@ -5,10 +5,10 @@ const UserInput = (props) => {
     
     
     useEffect(() => {
-        console.log('useEfect! setup');
-        console.log(inputRef);
-        console.log(inputRef.current);
         inputRef.current.focus();
+        console.log('useEfect! setup');
+        // console.log(inputRef);
+        // console.log(inputRef.current);
         return () => {
             console.log('cleaning');
 
