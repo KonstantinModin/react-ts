@@ -8,6 +8,7 @@ import CharComponent from '../CharComponent';
 import ErrorBoundary from '../ErrorBoundary';
 import PersonList from '../PersonList';
 import withClass from '../../hoc/withClass';
+import AuthContext from '../../context/authContext';
 
 const App = () => {
     const showMeButtonRef = React.createRef();
@@ -54,10 +55,12 @@ const App = () => {
         setInputValue(newValue);
     }
     const [userInputFlag, setUserInputFlag] = useState(true);
+    const [authState, setAuthState] = useState(false);
 
     return (
         
         <React.Fragment>
+            <AuthContext.Provider value={authState}>
             <h1>Heading</h1>
             <div>some text</div>
             <input value={inputValue} onChange={lastInputHandler} />
@@ -78,10 +81,14 @@ const App = () => {
                 <UserOutput output={myState} />
             </ErrorBoundary>
 
-            <button ref={showMeButtonRef} onClick={showMeHandler}>Show me!</button>            
-            {toggleBoll ? 
-            <PersonList list={personsList} delete={deleteHandler} change={handleChange} />
-            : null}           
+            <button ref={showMeButtonRef} onClick={showMeHandler}>Show me!</button>
+            <button onClick={() => setAuthState(!authState)}>Auth</button>            
+            
+                {toggleBoll ? 
+                <PersonList list={personsList} delete={deleteHandler} change={handleChange} />
+                : null}           
+            </AuthContext.Provider>
+
         </React.Fragment>
         
     );

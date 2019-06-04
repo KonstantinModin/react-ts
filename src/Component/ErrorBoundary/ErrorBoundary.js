@@ -17,8 +17,8 @@ export default class ErrorBoundary extends Component {
     
     render() {        
         if (this.state.hasError) {             
-            console.log(this.state.errorMessage);
-            console.log(this.state.info);
+            // console.log(this.state.errorMessage);
+            // console.log(this.state.info);
 
             return  (
                 <div>
