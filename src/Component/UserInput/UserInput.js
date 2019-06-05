@@ -6,12 +6,9 @@ const UserInput = (props) => {
     
     useEffect(() => {
         inputRef.current.focus();
-        console.log('useEfect! setup');
-        // console.log(inputRef);
-        // console.log(inputRef.current);
+        console.log('useEfect! setup');       
         return () => {
             console.log('cleaning');
-
         }
     }, []);    
     

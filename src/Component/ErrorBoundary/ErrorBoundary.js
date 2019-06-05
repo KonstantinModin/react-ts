@@ -16,13 +16,10 @@ export default class ErrorBoundary extends Component {
     }    
     
     render() {        
-        if (this.state.hasError) {             
-            // console.log(this.state.errorMessage);
-            // console.log(this.state.info);
-
+        if (this.state.hasError) {         
             return  (
                 <div>
-                    <h2>We got a problem here </h2>
+                    <h2>We got serious a problem here! </h2>
                     <h3>{this.state.errorMessage.toString()}</h3>                    
                     <h3>Info:{this.state.info.componentStack}</h3>                    
                 </div>
