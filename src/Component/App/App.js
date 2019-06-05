@@ -60,32 +60,32 @@ const App = () => {
     return (
         
         <React.Fragment>
-            <AuthContext.Provider value={authState}>
-            <h1>Heading</h1>
-            <div>some text</div>
-            <input value={inputValue} onChange={lastInputHandler} />
-            <p>{inputValue.length}</p>
-            <p>{inputValue}</p>
-            <ValidationComponent inputLength={inputValue.length} />
-            {inputValue.split``.map((char, index) => <CharComponent 
-                    char={char} 
-                    click={() => charComponentHandler(index)}
+            <AuthContext.Provider value={authState}>                
+                <input value={inputValue} onChange={lastInputHandler} />
+                <p>{inputValue.length}</p>
+                <p>{inputValue}</p>
+                <ValidationComponent inputLength={inputValue.length} />
+                {inputValue.split``.map((char, index) => 
+                    <CharComponent 
+                        char={char} 
+                        click={() => charComponentHandler(index)}
                     />
-            )}
-            <button onClick={() => setUserInputFlag(false)}>Delete User Input</button>
-            {userInputFlag ? <ErrorBoundary>
-                <UserInput defaultValue={myState} onChange={inputHandler}/>
-            </ErrorBoundary> : null}
+                )}
+                <button onClick={() => setUserInputFlag(false)}>Delete User Input</button>
+                
+                {userInputFlag ? <ErrorBoundary>
+                    <UserInput defaultValue={myState} onChange={inputHandler}/>
+                </ErrorBoundary> : null}
 
-            <ErrorBoundary>
-                <UserOutput output={myState} />
-            </ErrorBoundary>
+                <ErrorBoundary>
+                    <UserOutput output={myState} />
+                </ErrorBoundary>
 
-            <button ref={showMeButtonRef} onClick={showMeHandler}>Show me!</button>
-            <button onClick={() => setAuthState(!authState)}>Auth</button>            
-            
+                <button ref={showMeButtonRef} onClick={showMeHandler}>Show me!</button>
+                <button onClick={() => setAuthState(!authState)}>Auth</button>            
+                
                 {toggleBoll ? 
-                <PersonList list={personsList} delete={deleteHandler} change={handleChange} />
+                    <PersonList list={personsList} delete={deleteHandler} change={handleChange} />
                 : null}           
             </AuthContext.Provider>
 
