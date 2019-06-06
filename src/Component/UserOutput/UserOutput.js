@@ -9,6 +9,14 @@ export default class UserOutput extends Component {
     maxErrorhandler = () => {
         throw new Error('Max Error!');
     }
+    componentDidMount() {
+        
+        // UserOutput.name = 'Custom Name for User Output';
+        UserOutput.displayName = 'Custom Display Name for User Output';
+        console.log(UserOutput.name, UserOutput.displayName );
+
+    }
+    
 
     render() {
         if (this.state.hasError) {

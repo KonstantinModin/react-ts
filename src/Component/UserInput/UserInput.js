@@ -6,7 +6,8 @@ const UserInput = (props) => {
     
     useEffect(() => {
         inputRef.current.focus();
-        console.log('useEfect! setup');       
+        console.log('useEfect! setup');
+        UserInput.displayName = 'Custom User Input Name';
         return () => {
             console.log('cleaning');
         }
