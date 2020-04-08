@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './UserInput.css';
 
-const UserInput = (props) => {
-    
+const UserInput = (props) => {    
     
     useEffect(() => {
         inputRef.current.focus();
